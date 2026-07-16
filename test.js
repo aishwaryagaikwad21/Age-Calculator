@@ -3,9 +3,12 @@ const currentYear = date.getFullYear();
 const currentMonth = date.getMonth() + 1;
 const currentDate = date.getDate();
 
-function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form and update the DOM
+function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form/UI and update the DOM
     let calcYear = yearCalculation(birthDate, birthMonth, birthYear)
-    console.log(calcYear)   
+    console.log(calcYear)
+
+    let calcMonth = monthCalculation(birthDate, birthMonth);
+    console.log(calcMonth)
 }
 
 function yearCalculation(birthDate, birthMonth, birthYear){
@@ -54,4 +57,4 @@ function monthCalculation(birthDate, birthMonth){
     }
 }
 
-ageCalculator(12,12,2000);
+ageCalculator(15,3,2000);
