@@ -15,7 +15,7 @@ function ageCalculator(birthDate, birthMonth, birthYear){ //main function to tak
     let calcDays = dayCalculation(birthDate)
 
     if(calcMonths === 0 && calcDays === 0){
-        console.log(`Happy ${calcYear}th Birthday!`)
+        console.log(`Happy Birthday!, you're ${calcYear} years old.`)
     }
     else{
         console.log(calcYear)
