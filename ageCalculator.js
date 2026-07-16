@@ -4,9 +4,8 @@ const currentMonth = date.getMonth() + 1;
 const currentDate = date.getDate();
 
 function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form/UI and update the DOM
-    if(birthYear > currentYear){ //return error
+    if(birthYear > currentYear || birthDate > 31 || birthDate < 1 || birthMonth > 12 || birthMonth < 1){ //return error
         return console.error('Invalid date!');
-        
     }
     let calcYear = yearCalculation(birthDate, birthMonth, birthYear)
 
@@ -15,7 +14,7 @@ function ageCalculator(birthDate, birthMonth, birthYear){ //main function to tak
     let calcDays = dayCalculation(birthDate)
 
     if(calcMonths === 0 && calcDays === 0){
-        console.log(`Happy Birthday!, you're ${calcYear} years old.`)
+        console.log(`Happy Birthday🎉!, you're ${calcYear} years old.`)
     }
     else{
         console.log(calcYear)
@@ -25,7 +24,6 @@ function ageCalculator(birthDate, birthMonth, birthYear){ //main function to tak
 }
 
 function yearCalculation(birthDate, birthMonth, birthYear){
-     // year Calculation starts here
     let calcYear = currentYear - birthYear;
     if(birthMonth < currentMonth){ //birthday already happened
         return calcYear
@@ -72,8 +70,8 @@ function monthCalculation(birthDate, birthMonth){
 
 function dayCalculation(birthDate){
     if(birthDate > currentDate){
-        let previousMonth = new Date(2026, currentMonth - 1, 0).getDate();
-        return previousMonth - birthDate + currentDate;
+        let daysInPreviousMonth = new Date(currentYear, currentMonth - 1, 0).getDate();
+        return daysInPreviousMonth - birthDate + currentDate;
     }
     else if(birthDate < currentDate){
         return currentDate - birthDate;
