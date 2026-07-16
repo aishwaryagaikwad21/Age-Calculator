@@ -17,6 +17,10 @@ calculateBtn.addEventListener("click", () => {
     const birthDate = Number(parts[2]);
     const age = ageCalculator(birthDate, birthMonth, birthYear);
     //console.log(age)
+    if(age.error){
+        result.innerText = `${age.message}`;
+        return;
+    }
     if(age.birthday){
         result.innerText = `Happy Birthday 🎉! you are ${age.calcYear} years old`
     }
@@ -34,7 +38,10 @@ resetBtn.addEventListener("click", () => {
 
 function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form/UI and update the DOM
     if(birthYear > currentYear || birthDate > 31 || birthDate < 1 || birthMonth > 12 || birthMonth < 1){ //return error
-        return console.error('Invalid date!');
+        return {
+        error: true,
+        message: "Invalid date"
+        };
     }
     let calcYear = yearCalculation(birthDate, birthMonth, birthYear)
 
@@ -45,6 +52,7 @@ function ageCalculator(birthDate, birthMonth, birthYear){ //main function to tak
     if(calcMonths === 0 && calcDays === 0){
         //console.log(`Happy Birthday🎉!, you're ${calcYear} years old.`)
         return {
+            error:false,
             calcYear,
             calcMonths:0,
             calcDays:0,
@@ -52,10 +60,8 @@ function ageCalculator(birthDate, birthMonth, birthYear){ //main function to tak
         }
     }
     else{
-        /* console.log(calcYear)
-        console.log(calcMonths)
-        console.log(calcDays) */
         return {
+            error:false,
             calcYear,
             calcMonths,
             calcDays,
@@ -121,5 +127,3 @@ function dayCalculation(birthDate){
         return 0; 
     }
 }
-
-ageCalculator(16,7,2000);
