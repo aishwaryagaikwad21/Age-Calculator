@@ -14,7 +14,6 @@ A responsive Age Calculator built with that calculates a person's exact age in y
 - Responsive layout
 - Clean and modern UI
 
----
 
 ## 📚 Concepts Practiced
 
@@ -28,12 +27,10 @@ A responsive Age Calculator built with that calculates a person's exact age in y
 - Responsive Design
 - CSS Class Manipulation
 
----
 
 ## 🚀 Live Demo
 https://rainbow-frangollo-8b2504.netlify.app/
 
----
 
 ## 📂 Installation
 
@@ -51,8 +48,6 @@ index.html
 
 in your browser.
 
----
-
 ## 📖 What I Learned
 
 While building this project I learned:
@@ -64,16 +59,12 @@ While building this project I learned:
 - Using CSS classes instead of inline styles
 - Debugging DOM and CSS issues
 
----
-
 ## 🔮 Future Improvements
 
 - Validate impossible dates (e.g. 31 February)
 - Add animations
 - Improve accessibility
 - Dark Mode
-
----
 
 ## 📄 License
 
