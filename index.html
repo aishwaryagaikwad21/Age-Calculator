@@ -7,17 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>AGE CALCULATOR</h1>
+        <div class="header">
+            <img src="./age_calculator.png" alt="">
+            <h1>AGE CALCULATOR</h1>
+        </div>
+        <p class="body-p">Know your exact age!</p>
     <div class="container">
-        <label for="dob">Date of Birth</label>
-        <input type="date" name="dob" id="dob">
+        <div class="dob-input">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" id="dob">
+        </div>
         <div class="btn">
             <button id="calculate-btn">Calculate</button>
             <button id="reset-btn">Reset</button>
         </div>
-    </div>
-    <div class="container">
         <p id="result"></p>
+
+        <div class="cards">
+            <div class="card-items">
+                <h1 id="years"></h1>
+                <p>Years</p>
+            </div>
+            <div class="card-items">
+                <h1 id="month"></h1>
+                <p>Months</p>
+            </div>
+            <div class="card-items">
+                <h1 id="days"></h1>
+                <p>Days</p>
+            </div>
+        </div>
     </div>
 </body>
 <script src="./ageCalculator.js"></script>

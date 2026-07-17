@@ -5,10 +5,33 @@ const currentDate = date.getDate();
 
 const dobInput = document.getElementById("dob");
 const calculateBtn = document.getElementById("calculate-btn")
-const result = document.getElementById("result")
+const result = document.getElementById("result");
+const cards = document.getElementsByClassName("cards");
+cards[0].classList.add("hide");
+const card_items = document.getElementsByClassName("card-items")
+const h1_years = document.getElementById("years");
+const h1_months = document.getElementById("month");
+const h1_days = document.getElementById("days");
 
 calculateBtn.addEventListener("click", () => {
     const dobValue = dobInput.value;
+    // Reset previous error state
+    dobInput.style.border = "";
+    result.style.color = "";
+    result.innerText = "";
+    cards[0].classList.add("hide");
+    h1_years.innerText = ""
+    h1_months.innerText = ""
+    h1_days.innerText = ""
+
+    if(!dobValue){
+        result.innerText = "Please enter your birth date!";
+        result.style.color = "red"
+        dobInput.classList.add("error");
+        dobInput.style.border = "2px solid red";
+        return;
+    }
+
     //console.log(dobValue)
     const parts = dobValue.split("-")
     //console.log(parts);
@@ -21,11 +44,17 @@ calculateBtn.addEventListener("click", () => {
         result.innerText = `${age.message}`;
         return;
     }
+    cards[0].classList.remove("hide");
+    h1_years.innerText = age.calcYear;
+    h1_months.innerText = age.calcMonths;
+    h1_days.innerText = age.calcDays;
     if(age.birthday){
         result.innerText = `Happy Birthday 🎉! you are ${age.calcYear} years old`
+        result.classList.add("message")
     }
     else{
-        result.innerText = `You are ${age.calcYear} years ${age.calcMonths} months and ${age.calcDays} days old`
+        result.innerText = `You are ${age.calcYear} years ${age.calcMonths} months and ${age.calcDays} days old.`
+        result.classList.add("message")
     }
 })
 
@@ -34,6 +63,11 @@ const resetBtn = document.getElementById("reset-btn");
 resetBtn.addEventListener("click", () => {
     dobInput.value = "";
     result.innerText = "";
+    dobInput.style.border = "";
+    h1_years.innerText = ""
+    h1_months.innerText = ""
+    h1_days.innerText = ""
+    cards[0].classList.add("hide");
 });
 
 function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form/UI and update the DOM
@@ -93,7 +127,7 @@ function monthCalculation(birthDate, birthMonth){
         if(birthDate > currentDate){
             return currentMonth - birthMonth - 1
         }
-        else{
+        else{ //birth Date LESS than current Date
             return currentMonth - birthMonth;
         }
     }
