@@ -71,7 +71,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form/UI and update the DOM
-    if(birthYear > currentYear || birthDate > 31 || birthDate < 1 || birthMonth > 12 || birthMonth < 1){ //return error
+    if(birthYear > currentYear || birthDate > 31 || birthDate < 1 || birthMonth > 12 || birthMonth < 1 ||(birthDate > currentDate && birthMonth>= currentMonth && birthYear>=currentYear)){ //return error
         return {
         error: true,
         message: "Invalid date"
