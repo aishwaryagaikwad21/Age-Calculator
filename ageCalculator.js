@@ -27,7 +27,6 @@ calculateBtn.addEventListener("click", () => {
     if(!dobValue){
         result.innerText = "Please enter your birth date!";
         result.style.color = "red"
-        dobInput.classList.add("error");
         dobInput.style.border = "2px solid red";
         return;
     }
@@ -71,12 +70,19 @@ resetBtn.addEventListener("click", () => {
 });
 
 function ageCalculator(birthDate, birthMonth, birthYear){ //main function to take value from form/UI and update the DOM
-    if(birthYear > currentYear || birthDate > 31 || birthDate < 1 || birthMonth > 12 || birthMonth < 1 ||(birthDate > currentDate && birthMonth>= currentMonth && birthYear>=currentYear)){ //return error
+    const birth = new Date(birthYear, birthMonth - 1, birthDate);
+    const today = new Date(currentYear, currentMonth - 1, currentDate);
+    if (
+        birth > today ||
+        birthDate < 1 ||
+        birthMonth < 1 ||
+        birthMonth > 12
+    ) {
         return {
-        error: true,
-        message: "Invalid date"
+            error: true,
+            message: "Invalid date"
         };
-    }
+    } 
     let calcYear = yearCalculation(birthDate, birthMonth, birthYear)
 
     let calcMonths = monthCalculation(birthDate, birthMonth);
