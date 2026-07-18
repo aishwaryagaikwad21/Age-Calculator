@@ -31,15 +31,14 @@ calculateBtn.addEventListener("click", () => {
         dobInput.style.border = "2px solid red";
         return;
     }
-
-    //console.log(dobValue)
+    
     const parts = dobValue.split("-")
-    //console.log(parts);
+    
     const birthYear = Number(parts[0])
     const birthMonth = Number(parts[1]);
     const birthDate = Number(parts[2]);
     const age = ageCalculator(birthDate, birthMonth, birthYear);
-    //console.log(age)
+    
     if(age.error){
         result.innerText = `${age.message}`;
         return;
@@ -84,7 +83,6 @@ function ageCalculator(birthDate, birthMonth, birthYear){ //main function to tak
     let calcDays = dayCalculation(birthDate)
 
     if(calcMonths === 0 && calcDays === 0){
-        //console.log(`Happy Birthday🎉!, you're ${calcYear} years old.`)
         return {
             error:false,
             calcYear,
